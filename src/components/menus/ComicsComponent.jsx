@@ -40,7 +40,7 @@ const menus = [
 export default function ComicsComponent() {
   return (
     <div className="max-w-7xl w-full flex flex-col py-16 items-center space-y-8">
-      <h1 className="font-bold text-3xl uppercase">trending news</h1>
+      <h1 className="font-bold text-3xl uppercase">latest comics</h1>
       <div className="flex gap-4">
         {menus.map((item, i) => (
           <div key={i} className="flex flex-col w-40 h-80 space-y-4 group">

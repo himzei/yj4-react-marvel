@@ -1,5 +1,6 @@
 import { FaSearch } from "react-icons/fa";
 import LogoLarge from "../assets/png/logo-large.png";
+import LogoSmall from "../assets/png/logo-small.png";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import NavLink from "./menus/NavLink";
@@ -9,14 +10,38 @@ import NewsComponent from "./menus/NewsComponent";
 import ComicsComponent from "./menus/ComicsComponent";
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [logoSize, setLogoSize] = useState(false);
   const [menuContent, setMenuContent] = useState();
   const showFlyout = menuContent && menuOpen;
-  console.log(menuOpen);
+
+  addEventListener("wheel", (e) => {
+    if (e.deltaY > 0 && window.scrollY > 40) {
+      setScrolled(true);
+    } else if (e.deltaY < 0) {
+      setScrolled(false);
+    }
+    if (window.scrollY === 0) {
+      setTimeout(() => {
+        setLogoSize(true);
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        setLogoSize(false);
+      }, 1000);
+    }
+  });
+
   return (
     <MenuOpenContext.Provider value={{ menuOpen, setMenuOpen, setMenuContent }}>
-      <div className="sticky top-0 z-[99]">
-        <div className="w-full h-12 flex bg-main-dark justify-center border-b border-gray-700 ">
+      <div
+        className="sticky top-0 z-[99] transition-all duration-700"
+        style={{
+          transform: `${scrolled ? "translateY(-80px)" : "translateY(0)"}`,
+        }}
+      >
+        <div className="w-full h-12 flex bg-main-dark justify-center border-b border-t border-gray-700 ">
           <div className="relative max-w-7xl w-full h-full flex justify-between items-center text-white text-xs">
             {/* login */}
             <div className="border-r border-l uppercase border-gray-700 h-full px-4 flex items-center space-x-2">
@@ -45,14 +70,20 @@ export default function Header() {
               </div>
             </div>
             {/* 로고 : absolute */}
-            <div className="absolute top-0 left-[50%] -translate-x-[50%] w-32 h-12 bg-gray-100">
-              <Link to="/">
-                <img
-                  src={LogoLarge}
-                  alt="logo_small"
-                  className="w-full h-full object-cover"
-                />
-              </Link>
+            <div className="absolute top-0 left-[50%] -translate-x-[50%] h-12 ">
+              {logoSize ? (
+                <Link to="/">
+                  <div className="h-full">
+                    <img className="h-full" src={LogoLarge} alt="logo_large" />
+                  </div>
+                </Link>
+              ) : (
+                <Link to="/">
+                  <div className="h-full">
+                    <img className="h-full" src={LogoSmall} alt="logo_large" />
+                  </div>
+                </Link>
+              )}
             </div>
           </div>
         </div>

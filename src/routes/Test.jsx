@@ -60,8 +60,6 @@ const FlyoutNav = () => {
 const NavLink = ({ children, href, FlyoutContent }) => {
   const [open, setOpen] = useState(false);
   const showFlyout = FlyoutContent && open;
-  console.log("showFlyout", showFlyout);
-  console.log("open", open);
 
   return (
     <div
