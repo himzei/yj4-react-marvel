@@ -17,7 +17,7 @@ export default function Header() {
   const showFlyout = menuContent && menuOpen;
 
   addEventListener("wheel", (e) => {
-    if (e.deltaY > 0 && window.scrollY > 40) {
+    if (e.deltaY > 0 && window.scrollY > 80) {
       setScrolled(true);
     } else if (e.deltaY < 0) {
       setScrolled(false);
@@ -36,7 +36,7 @@ export default function Header() {
   return (
     <MenuOpenContext.Provider value={{ menuOpen, setMenuOpen, setMenuContent }}>
       <div
-        className="sticky top-0 z-[99] transition-all duration-700"
+        className="sticky top-0 z-[99] transition-all duration-700 "
         style={{
           transform: `${scrolled ? "translateY(-80px)" : "translateY(0)"}`,
         }}
