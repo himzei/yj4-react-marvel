@@ -122,13 +122,13 @@ export default function Header() {
 
 const MENUS = [
   {
-    text: "news",
-    href: "#",
+    text: "characters",
+    href: "/characters",
     component: NewsComponent,
   },
   {
     text: "comics",
-    href: "#",
+    href: "/comics",
     component: ComicsComponent,
   },
   {

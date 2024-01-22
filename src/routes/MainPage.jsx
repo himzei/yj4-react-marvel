@@ -4,9 +4,14 @@ import Layout from "../components/Layout";
 import MainSlide from "../components/MainSlide";
 import { apiGetComics } from "../api";
 import ListCarousel from "../components/ListCarousel";
+import TitleRotate from "../components/TitleRotate";
+import InsiderSection from "../components/InsiderSection";
 
 export default function MainPage() {
-  const { data, isLoading } = useQuery("getComics", apiGetComics);
+  const { data, isLoading } = useQuery(
+    ["getComics", { limit: 30 }],
+    apiGetComics
+  );
 
   return (
     <Layout>
@@ -31,10 +36,7 @@ export default function MainPage() {
 
           <div className="absolute left-[50%] -translate-x-[50%] px-4 max-w-7xl w-full h-full flex flex-col justify-center space-y-8">
             <div>
-              <div className="relative flex items-center uppercase w-80 h-20 text-white text-xl tracking-widest">
-                <span className=" bg-main-dark">on sale 1/17</span>
-                <div className="absolute -z-10 top-20 left-0 w-28 origin-bottom-left h-[1px] -rotate-[45deg] bg-[#c6a972]"></div>
-              </div>
+              <TitleRotate text="on sale 1/17" color="dark" />
               <h2 className="text-4xl font-bold text-white uppercase py-2">
                 New on Marvel Unlimited
               </h2>
@@ -48,6 +50,9 @@ export default function MainPage() {
         {/* 리스트 */}
         <ListCarousel lists={data?.data?.results} isLoading={isLoading} />
       </section>
+
+      {/* 마블 인사이더 */}
+      <InsiderSection />
     </Layout>
   );
 }
