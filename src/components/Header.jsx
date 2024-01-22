@@ -132,10 +132,6 @@ const MENUS = [
     component: ComicsComponent,
   },
   {
-    text: "characters",
-    href: "#",
-  },
-  {
     text: "movies",
     href: "#",
   },

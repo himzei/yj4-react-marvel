@@ -9,6 +9,7 @@ import Instagram from "../assets/Instagram";
 import Twitter from "../assets/Twitter";
 import TitleRotate from "../components/TitleRotate";
 import InsiderSection from "../components/InsiderSection";
+import SubPageMain from "../components/SubPageMain";
 
 export default function Comics() {
   const CARD_WIDTH = 194;
@@ -16,27 +17,17 @@ export default function Comics() {
   const MARGIN = 8;
 
   const { data } = useQuery(["getComics", { limit: 36 }], apiGetComics);
-  console.log(data);
 
   return (
     <Layout>
       <NoticeDisney />
       {/* 타이틀 */}
-      <section className="relative w-full flex justify-end h-[400px]">
-        <img
-          className="w-3/4 h-full object-cover"
-          src="https://assets-prd.ignimgs.com/2023/11/07/streamingwars-msmarvel-blogroll-1699390345828.jpg"
-          alt="movies_image"
-        />
-        <div className="absolute left-0 right-0 top-0 w-full h-full bg-gradient-to-r from-gray-900 via-gray-900 via-35% to-transparent"></div>
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2  text-white text-center">
-          <h1 className="text-4xl font-bold  uppercase py-2">Movies</h1>
-          <p>
-            Journey into the cosmic depths of the mighty Marvel Cinematic
-            Universe!
-          </p>
-        </div>
-      </section>
+      <SubPageMain
+        imgUrl="https://assets-prd.ignimgs.com/2023/11/07/streamingwars-msmarvel-blogroll-1699390345828.jpg"
+        title="Comics"
+        description="Journey into the cosmic depths of the mighty Marvel Cinematic
+          Universe!"
+      />
       {/* 리스트 */}
       <section className="w-full flex justify-center">
         <div className="relative max-w-7xl w-full h-[350px]">
@@ -64,7 +55,7 @@ export default function Comics() {
           </p>
           <Button type="stream now" />
           {/* 아이콘 */}
-          <div className="absolute bottom-0 right-0 w-full h-12 flex justify-end items-center space-x-4 px-4">
+          <div className="absolute bottom-0 right-0 w-full h-12 flex justify-end items-end space-x-4 px-4">
             <Facebook />
             <Instagram />
             <Twitter />
