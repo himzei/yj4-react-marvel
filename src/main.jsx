@@ -8,6 +8,7 @@ import NotFound from "./routes/NotFound";
 import Test from "./routes/Test";
 import Comics from "./routes/Comics";
 import Characters from "./routes/Characters";
+import CharacterDetail from "./routes/CharacterDetail";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,17 @@ const router = createBrowserRouter([
       },
       {
         path: "characters",
-        element: <Characters />,
+        element: <Outlet />,
+        children: [
+          {
+            path: "",
+            element: <Characters />,
+          },
+          {
+            path: ":id",
+            element: <CharacterDetail />,
+          },
+        ],
       },
       {
         path: "comics",

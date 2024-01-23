@@ -17,9 +17,11 @@ export default function ListItem({ item, CARD_WIDTH, CARD_HEIGHT, MARGIN }) {
       </div>
       <div className="py-2 px-1">
         <h2 className="text-sm font-semibold duration-500 group-hover:text-red-600 ">
-          {item.title.substr(0, 48)}
+          {item.title ? item.title.substr(0, 48) : item.name.substr(0, 40)}
         </h2>
-        <h4 className="text-gray-500 text-sm">{item.modified.split("-")[0]}</h4>
+        <h4 className="text-gray-500 text-sm">
+          {item.modified?.split("-")[0]}
+        </h4>
       </div>
     </div>
   );

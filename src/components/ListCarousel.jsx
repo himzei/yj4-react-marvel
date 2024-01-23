@@ -6,7 +6,7 @@ import useMeasure from "react-use-measure";
 import ListItem from "./ListItem";
 
 export default function ListCarousel({ lists, isLoading }) {
-  const CARD_WIDTH = 194;
+  const CARD_WIDTH = 195;
   const CARD_HEIGHT = 340;
   const MARGIN = 8;
   const CARD_SIZE = CARD_WIDTH + MARGIN + 8;
@@ -42,11 +42,11 @@ export default function ListCarousel({ lists, isLoading }) {
 
   return (
     <>
-      <div className="w-full flex justify-center">
+      <div className="w-full flex justify-center ">
         {/* 컨테이너 */}
         <div
           ref={ref}
-          className="relative max-w-7xl w-full h-[380px] p-2 -translate-y-12 bg-white overflow-hidden"
+          className="relative max-w-7xl w-full h-[380px] p-2 -translate-y-12 bg-white overflow-hidden "
         >
           {isLoading ? (
             <div className="w-full h-full flex justify-center items-center">

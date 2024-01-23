@@ -3,13 +3,14 @@ import Layout from "../components/Layout";
 import ListItem from "../components/ListItem";
 import NoticeDisney from "../components/NoticeDisney";
 import { apiGetComics } from "../api";
-import Button from "../components/Button";
+
 import Facebook from "../assets/Facebook";
 import Instagram from "../assets/Instagram";
 import Twitter from "../assets/Twitter";
 import TitleRotate from "../components/TitleRotate";
 import InsiderSection from "../components/InsiderSection";
 import SubPageMain from "../components/SubPageMain";
+import TitleImage from "../components/TitleImage";
 
 export default function Comics() {
   const CARD_WIDTH = 194;
@@ -44,38 +45,16 @@ export default function Comics() {
           </div>
         </div>
       </section>
-      {/* 스트림 나우 */}
-      <section className="w-full h-[500px] relative flex justify-center items-center">
-        <div className="relative max-w-7xl h-full w-full z-10 flex flex-col justify-center">
-          <h2 className="text-4xl font-bold text-white uppercase">
-            a university of super heroes
-          </h2>
-          <p className="text-white py-2 mb-2">
-            All Your Favorite and More Start Streaming Now.
-          </p>
-          <Button type="stream now" />
-          {/* 아이콘 */}
-          <div className="absolute bottom-0 right-0 w-full h-12 flex justify-end items-end space-x-4 px-4">
-            <Facebook />
-            <Instagram />
-            <Twitter />
-          </div>
-        </div>
-        <div
-          className="w-full h-full absolute inset-0"
-          style={{
-            clipPath: "polygon(0 0, 100% 0, 100% 90%, 0% 100%)",
-          }}
-        >
-          <img
-            className="w-full h-full object-cover"
-            src="https://wallpapers.com/images/hd/marvel-pictures-s9dmy7uuerr2xi7o.jpg"
-            alt="marvel_rect"
-          />
-          <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-900 to-gray-500/0" />
-        </div>
-      </section>
 
+      {/* 스트림 나우 */}
+      <TitleImage
+        Icon1={Facebook}
+        Icon2={Instagram}
+        Icon3={Twitter}
+        title="a university of super heroes"
+        description="All Your Favorite and More Start Streaming Now."
+        imgUrl="https://wallpapers.com/images/hd/marvel-pictures-s9dmy7uuerr2xi7o.jpg"
+      />
       {/* 리스트 36 */}
       <section className="w-full flex justify-center py-4">
         <div className="max-w-7xl w-full">

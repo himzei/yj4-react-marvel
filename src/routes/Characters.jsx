@@ -7,11 +7,7 @@ import TitleRotate from "../components/TitleRotate";
 import InsiderSection from "../components/InsiderSection";
 
 export default function Characters() {
-  const { data, isLoading } = useQuery(
-    ["getCharacters", { limit: 36 }],
-    apiGetCharacters
-  );
-  console.log(data, isLoading);
+  const { data } = useQuery(["getCharacters", { limit: 36 }], apiGetCharacters);
 
   return (
     <Layout>

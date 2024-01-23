@@ -31,3 +31,21 @@ export async function apiGetCharacters({ queryKey }) {
     console.log(error);
   }
 }
+
+export async function apiGetEvents({ pageParam = 0 }) {
+  const offset = parseInt(pageParam) * 10;
+
+  try {
+    return await fetch(
+      `${BASE_URL}/events?limit=10&offset=${offset}&apikey=${API_KEY}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((res) => res.json());
+  } catch (error) {
+    console.log(error);
+  }
+}
