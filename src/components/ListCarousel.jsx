@@ -5,7 +5,7 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import useMeasure from "react-use-measure";
 import ListItem from "./ListItem";
 
-export default function ListCarousel({ lists, isLoading }) {
+export default function ListCarousel({ lists, isLoading, characters }) {
   const CARD_WIDTH = 195;
   const CARD_HEIGHT = 340;
   const MARGIN = 8;
@@ -66,6 +66,7 @@ export default function ListCarousel({ lists, isLoading }) {
                   CARD_WIDTH={CARD_WIDTH}
                   CARD_HEIGHT={CARD_HEIGHT}
                   MARGIN={MARGIN}
+                  characters={characters}
                 />
               ))}
             </motion.div>

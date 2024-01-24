@@ -10,6 +10,7 @@ import { PropagateLoader } from "react-spinners";
 import HypeImg from "../assets/svg/titleHype.svg";
 import TitleImage from "../components/TitleImage";
 import Layout7 from "../components/Layout7";
+import { Link } from "react-router-dom";
 
 export default function MainPage() {
   const { data, isLoading } = useQuery(
@@ -47,7 +48,6 @@ export default function MainPage() {
     apiGetCharacters
   );
 
-  console.log(hasNextPage);
   return (
     <Layout>
       <section className="w-full flex justify-center">
@@ -102,31 +102,30 @@ export default function MainPage() {
               <div className="gap-8">
                 {dataEvents?.pages.map((page) =>
                   page?.data?.results?.map((item, index) => (
-                    <div
-                      key={index}
-                      className="w-full h-64 border-b-2 pb-4 mb-4 flex space-x-8 group cursor-pointer"
-                    >
-                      {/* image */}
-                      <div className="w-1/2 h-full">
-                        <img
-                          className="w-full h-full object-cover"
-                          src={`${item.thumbnail?.path}.${item.thumbnail?.extension}`}
-                          alt="event_image"
-                        />
+                    <Link to={`/events/${item.id}`} key={index}>
+                      <div className="w-full h-64 border-b-2 pb-4 mb-4 flex space-x-8 group cursor-pointer">
+                        {/* image */}
+                        <div className="w-1/2 h-full">
+                          <img
+                            className="w-full h-full object-cover"
+                            src={`${item.thumbnail?.path}.${item.thumbnail?.extension}`}
+                            alt="event_image"
+                          />
+                        </div>
+                        {/* description */}
+                        <div className="w-1/2 h-full">
+                          <h2 className="uppercase font-semibold group-hover:text-red-600 duration-500">
+                            {item.title}
+                          </h2>
+                          <p className="text-sm text-gray-500">
+                            {item.description}
+                          </p>
+                          <h3 className="italic text-sm">
+                            {item.start?.substr(0, 10)}
+                          </h3>
+                        </div>
                       </div>
-                      {/* description */}
-                      <div className="w-1/2 h-full">
-                        <h2 className="uppercase font-semibold group-hover:text-red-600 duration-500">
-                          {item.title}
-                        </h2>
-                        <p className="text-sm text-gray-500">
-                          {item.description}
-                        </p>
-                        <h3 className="italic text-sm">
-                          {item.start?.substr(0, 10)}
-                        </h3>
-                      </div>
-                    </div>
+                    </Link>
                   ))
                 )}
               </div>
@@ -205,6 +204,7 @@ export default function MainPage() {
         <ListCarousel
           lists={dataCharacters?.data?.results}
           isLoading={isLoadingCharacters}
+          characters="characters"
         />
       </Layout7>
 

@@ -9,6 +9,9 @@ import Test from "./routes/Test";
 import Comics from "./routes/Comics";
 import Characters from "./routes/Characters";
 import CharacterDetail from "./routes/CharacterDetail";
+import Detail from "./routes/Detail";
+import CreatorDetail from "./routes/CreatorDetail";
+import EventDetail from "./routes/EventDetail";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +22,14 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <MainPage />,
+      },
+      {
+        path: "creators/:id",
+        element: <CreatorDetail />,
+      },
+      {
+        path: "events/:id",
+        element: <EventDetail />,
       },
       {
         path: "characters",
@@ -36,7 +47,17 @@ const router = createBrowserRouter([
       },
       {
         path: "comics",
-        element: <Comics />,
+        element: <Outlet />,
+        children: [
+          {
+            path: "",
+            element: <Comics />,
+          },
+          {
+            path: ":id",
+            element: <Detail />,
+          },
+        ],
       },
       {
         path: "test",

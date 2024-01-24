@@ -5,6 +5,7 @@ import NoticeDisney from "../components/NoticeDisney";
 import SubPageMain from "../components/SubPageMain";
 import TitleRotate from "../components/TitleRotate";
 import InsiderSection from "../components/InsiderSection";
+import CharacterItem from "../components/CharacterItem";
 
 export default function Characters() {
   const { data } = useQuery(["getCharacters", { limit: 36 }], apiGetCharacters);
@@ -25,32 +26,7 @@ export default function Characters() {
           {/* list 36 */}
           <div className="w-full grid grid-cols-6 grid-rows-6 gap-4 px-4 my-2">
             {data?.data?.results.map((item, index) => (
-              <div className="h-[340px]" key={index}>
-                <div
-                  className="w-full h-full flex flex-col group cursor-pointer"
-                  style={{
-                    clipPath:
-                      "polygon(0 0, 100% 0, 100% 90%, 85% 100%, 0 100%)",
-                  }}
-                >
-                  <div className="w-full h-[60%] overflow-hidden">
-                    <img
-                      className="w-full h-full duration-500 object-cover group-hover:scale-110"
-                      src={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
-                      alt="character_image"
-                    />
-                  </div>
-                  <div className="relative w-full h-[40%] bg-red-500 flex items-end">
-                    <div className="absolute inset-0 w-full h-full flex flex-col justify-between p-4 text-white">
-                      <h2>{item?.name}</h2>
-                      <p className="text-xs text-gray-300 duration-500 group-hover:text-gray-100">
-                        {item?.description.substr(0, 46)}
-                      </p>
-                    </div>
-                    <div className="w-full h-[95%] duration-500 group-hover:h-0 bg-main-dark"></div>
-                  </div>
-                </div>
-              </div>
+              <CharacterItem item={item} key={index} />
             ))}
           </div>
         </div>

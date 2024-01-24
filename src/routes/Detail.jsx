@@ -1,28 +1,47 @@
 import { useParams } from "react-router-dom";
 import Layout from "../components/Layout";
-import NoticeDisney from "../components/NoticeDisney";
 import { useQuery } from "react-query";
-import { apiGetCharacterDetail, apiGetComics } from "../api";
+import { apiGetCharacters, apiGetComicsDetail, apiGetCreators } from "../api";
+import NoticeDisney from "../components/NoticeDisney";
 import { ClipLoader } from "react-spinners";
 import Button from "../components/Button";
-import ListCarousel from "../components/ListCarousel";
 import Layout7 from "../components/Layout7";
 import TitleRotate from "../components/TitleRotate";
+import CharacterItem from "../components/CharacterItem";
+import CreatorItem from "../components/CreatorItem";
 
-export default function CharacterDetail() {
+export default function Detail() {
   let item;
+  let characters;
+  let creators;
+
   const { id } = useParams();
   const { data, isLoading } = useQuery({
     queryKey: ["apiGetComicsDetail", id],
-    queryFn: () => apiGetCharacterDetail(id),
+    queryFn: () => apiGetComicsDetail(id),
   });
   if (!isLoading) {
     item = data?.data?.results[0];
   }
-  const { data: dataComics, isLoading: isLoadingComics } = useQuery(
-    ["getComics", { limit: 36 }],
-    apiGetComics
+
+  const { data: dataCharacters, isLoading: isLoadingCharacters } = useQuery(
+    ["getCharacters", { limit: 6 }],
+    apiGetCharacters
   );
+  if (!isLoadingCharacters) {
+    characters = dataCharacters?.data?.results;
+  }
+
+  const { data: dataCreators, isLoading: isLoadingCreators } = useQuery(
+    ["getCreators"],
+    () => apiGetCreators({ limit: 6 })
+  );
+
+  if (!isLoadingCreators) {
+    creators = dataCreators?.data?.results;
+  }
+  console.log(creators);
+
   return (
     <Layout>
       <NoticeDisney />
@@ -51,7 +70,7 @@ export default function CharacterDetail() {
                 />
               </div>
               <div className="w-full h-full py-16 flex flex-col  text-white space-y-8 ">
-                <h1 className="text-2xl font-bold w-[80%]">{item.name}</h1>
+                <h1 className="text-2xl font-bold w-[80%]">{item.title}</h1>
                 <div>
                   <h2 className="text-xl font-semibold">Published</h2>
                   <p>{item.modified.substr(0, 10)}</p>
@@ -137,14 +156,21 @@ export default function CharacterDetail() {
       </div>
       {/* character */}
       <Layout7>
-        <div className="px-4">
-          <TitleRotate text="characters" />
+        <TitleRotate text="characters" />
+        <div className="grid grid-cols-6 gap-4">
+          {characters?.map((item, index) => (
+            <CharacterItem item={item} key={index} />
+          ))}
         </div>
-        <div className="h-12" />
-        <ListCarousel
-          lists={dataComics?.data?.results}
-          isLoading={isLoadingComics}
-        />
+      </Layout7>
+      {/* creator */}
+      <Layout7>
+        <TitleRotate text="creators" />
+        <div className="grid grid-cols-6 gap-4">
+          {creators?.map((item, index) => (
+            <CreatorItem key={index} item={item} />
+          ))}
+        </div>
       </Layout7>
     </Layout>
   );

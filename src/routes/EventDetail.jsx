@@ -2,19 +2,19 @@ import { useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import NoticeDisney from "../components/NoticeDisney";
 import { useQuery } from "react-query";
-import { apiGetCharacterDetail, apiGetComics } from "../api";
+import { apiGetComics, apiGetEventDetail } from "../api";
 import { ClipLoader } from "react-spinners";
 import Button from "../components/Button";
-import ListCarousel from "../components/ListCarousel";
 import Layout7 from "../components/Layout7";
 import TitleRotate from "../components/TitleRotate";
+import ListCarousel from "../components/ListCarousel";
 
-export default function CharacterDetail() {
+export default function EventDetail() {
   let item;
   const { id } = useParams();
   const { data, isLoading } = useQuery({
-    queryKey: ["apiGetComicsDetail", id],
-    queryFn: () => apiGetCharacterDetail(id),
+    queryKey: ["apiGetEventDetail", id],
+    queryFn: () => apiGetEventDetail(id),
   });
   if (!isLoading) {
     item = data?.data?.results[0];
