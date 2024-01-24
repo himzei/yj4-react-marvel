@@ -177,14 +177,14 @@ const Cards = ({ testimonials, selected, setSelected }) => (
 export default function MainSlide() {
   const [selected, setSelected] = useState(0);
   return (
-    <section className="w-full  flex flex-col overflow-hidden">
+    <section className="w-full flex flex-col overflow-hidden">
       <NoticeDisney />
       <Cards
         testimonials={testimonials}
         setSelected={setSelected}
         selected={selected}
       />
-      <div className="w-full flex justify-center">
+      <div className="w-full flex justify-center ">
         <div className="max-w-7xl w-full py-8 grid grid-cols-4">
           <div className="col-span-3 -translate-y-14 z-10 bg-white pl-4 h-full">
             <SelectBtns

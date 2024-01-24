@@ -21,17 +21,23 @@ export default function MainPage() {
     data: dataEvents,
     isLoading: isLoadingEvents,
     fetchNextPage,
-
+    hasNextPage,
     isFetching,
   } = useInfiniteQuery(
     "getEvents",
     ({ pageParam = 0 }) => apiGetEvents({ pageParam }),
     {
-      staleTime: 100000,
-      keepPreviousData: true,
+      staleTime: Infinity,
+      cacheTime: 0,
       getNextPageParam: (lastPage, pages) => {
-        const nextPage = pages.length;
-        return nextPage;
+        const limit = lastPage.data.limit;
+        const count = lastPage.data.count;
+        if (count === limit) {
+          const nextPage = pages.length;
+          return nextPage;
+        } else {
+          return null;
+        }
       },
     }
   );
@@ -41,6 +47,7 @@ export default function MainPage() {
     apiGetCharacters
   );
 
+  console.log(hasNextPage);
   return (
     <Layout>
       <section className="w-full flex justify-center">
@@ -124,17 +131,18 @@ export default function MainPage() {
                 )}
               </div>
             )}
-
-            <div
-              className="w-full pb-4 flex justify-center"
-              onClick={() => fetchNextPage()}
-            >
-              <Button
-                isFetching={isFetching}
-                type="load more"
-                outline="outline"
-              />
-            </div>
+            {hasNextPage && (
+              <div
+                className="w-full pb-4 flex justify-center"
+                onClick={() => fetchNextPage()}
+              >
+                <Button
+                  isFetching={isFetching}
+                  type="load more"
+                  outline="outline"
+                />
+              </div>
+            )}
           </div>
           {/* 오른쪽 : the Hype box */}
           <div className="w-[30%] py-16">
