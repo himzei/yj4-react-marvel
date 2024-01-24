@@ -16,7 +16,7 @@ export default function Comics() {
   const CARD_WIDTH = 194;
   const CARD_HEIGHT = 340;
   const MARGIN = 8;
-  const { data } = useQuery(["getComics", { limit: 36 }], apiGetComics);
+  const { data } = useQuery(["getComics", { limit: 100 }], apiGetComics);
 
   return (
     <Layout>

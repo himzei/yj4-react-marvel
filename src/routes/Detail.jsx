@@ -1,28 +1,37 @@
 import { useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import { useQuery } from "react-query";
-import { apiGetCharacters, apiGetComicsDetail, apiGetCreators } from "../api";
-import NoticeDisney from "../components/NoticeDisney";
+import { apiGetCharacters, apiGetComics, apiGetCreators } from "../api";
 import { ClipLoader } from "react-spinners";
 import Button from "../components/Button";
 import Layout7 from "../components/Layout7";
 import TitleRotate from "../components/TitleRotate";
 import CharacterItem from "../components/CharacterItem";
 import CreatorItem from "../components/CreatorItem";
+import PrevNext from "../components/PrevNext";
 
 export default function Detail() {
   let item;
   let characters;
   let creators;
+  let comics;
 
   const { id } = useParams();
-  const { data, isLoading } = useQuery({
-    queryKey: ["apiGetComicsDetail", id],
-    queryFn: () => apiGetComicsDetail(id),
-  });
+
+  const { data, isLoading } = useQuery(
+    ["getComics", { limit: 100 }],
+    apiGetComics
+  );
+
   if (!isLoading) {
-    item = data?.data?.results[0];
+    comics = data?.data?.results;
   }
+
+  item = comics?.find((comic) => comic.id === parseInt(id));
+
+  const index = comics?.indexOf(item);
+  const next = index > 0 ? comics[index - 1] : null;
+  const prev = index < comics?.length - 1 ? comics[index + 1] : null;
 
   const { data: dataCharacters, isLoading: isLoadingCharacters } = useQuery(
     ["getCharacters", { limit: 6 }],
@@ -40,11 +49,10 @@ export default function Detail() {
   if (!isLoadingCreators) {
     creators = dataCreators?.data?.results;
   }
-  console.log(creators);
 
   return (
     <Layout>
-      <NoticeDisney />
+      <PrevNext prev={prev} next={next} />
       <div
         className="relative w-full h-[800px] bg-main-dark flex justify-center"
         style={{

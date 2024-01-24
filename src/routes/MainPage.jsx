@@ -13,10 +13,14 @@ import Layout7 from "../components/Layout7";
 import { Link } from "react-router-dom";
 
 export default function MainPage() {
+  let comics;
   const { data, isLoading } = useQuery(
-    ["getComics", { limit: 30 }],
+    ["getComics", { limit: 100 }],
     apiGetComics
   );
+  if (!isLoading) {
+    comics = data?.data?.results;
+  }
 
   const {
     data: dataEvents,
@@ -85,7 +89,7 @@ export default function MainPage() {
         </div>
         {/* 리스트 */}
 
-        <ListCarousel lists={data?.data?.results} isLoading={isLoading} />
+        <ListCarousel lists={comics} isLoading={isLoading} />
       </section>
 
       {/* 이벤트 */}
