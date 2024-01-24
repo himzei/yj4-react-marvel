@@ -86,7 +86,7 @@ const SelectBtns = ({ numTracks, setSelected, selected }) => {
             />
           ) : (
             <span
-              className="absolute top-0 left-0 bottom-0 bg-red-600"
+              className="absolute top-0 left-0 bottom-0 "
               style={{ width: selected > index ? "100%" : "0%" }}
             />
           )}
