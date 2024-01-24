@@ -29,7 +29,7 @@ export default function Comics() {
           Universe!"
       />
       {/* 리스트 */}
-      <section className="w-full flex justify-center">
+      <section className="w-full flex justify-center bg-white">
         <div className="relative max-w-7xl w-full h-[350px]">
           <div className="w-full h-full absolute -top-8 left-0 right-0 bg-white flex p-2">
             {data?.data?.results?.slice(1, 7).map((item, index) => (
@@ -55,7 +55,7 @@ export default function Comics() {
         imgUrl="https://wallpapers.com/images/hd/marvel-pictures-s9dmy7uuerr2xi7o.jpg"
       />
       {/* 리스트 36 */}
-      <section className="w-full flex justify-center py-4">
+      <section className="w-full flex justify-center py-4 bg-white">
         <div className="max-w-7xl w-full">
           <div className="px-4">
             <TitleRotate text="marvel movies" />

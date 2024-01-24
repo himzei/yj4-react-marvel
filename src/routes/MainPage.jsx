@@ -59,7 +59,7 @@ export default function MainPage() {
       </section>
 
       {/* 코믹스 */}
-      <section className="w-full">
+      <section className="w-full bg-white">
         {/* 이미지 타이틀 */}
         <div className="relative w-full h-[500px] flex justify-end bg-main-dark">
           <div
@@ -93,7 +93,7 @@ export default function MainPage() {
       </section>
 
       {/* 이벤트 */}
-      <section className="w-full flex justify-center">
+      <section className="w-full flex justify-center bg-white">
         <div className="max-w-7xl w-full px-4 flex space-x-16">
           {/* 왼쪽 : the latest */}
           <div className="w-[70%] ">

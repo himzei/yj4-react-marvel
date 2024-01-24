@@ -18,7 +18,7 @@ export default function Characters() {
         title="marvel characters"
         description="Get hooked on a hearty helping of heroes and villains from the humble House of Ideas!"
       />
-      <section className="w-full flex justify-center py-4">
+      <section className="w-full flex justify-center py-4 bg-white">
         <div className="max-w-7xl w-full">
           <div className="px-4">
             <TitleRotate text="featured characters" />

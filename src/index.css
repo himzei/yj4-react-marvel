@@ -8,5 +8,6 @@
   font-style: normal;
 }
 body {
+  background-color: #101827;
   overscroll-behavior: none;
 }
