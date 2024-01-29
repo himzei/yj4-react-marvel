@@ -94,12 +94,12 @@ export default function MainPage() {
 
       {/* 이벤트 */}
       <section className="w-full flex justify-center bg-white">
-        <div className="max-w-7xl w-full px-4 flex space-x-16">
+        <div className="max-w-7xl w-full px-4 grid grid-cols-1 md:grid-cols-[7fr_3fr] gap-x-16">
           {/* 왼쪽 : the latest */}
-          <div className="w-[70%] ">
+          <div className="w-full">
             <TitleRotate text="the latest" />
             {isLoadingEvents ? (
-              <div className="w-full py-32">
+              <div className="w-full py-32 flex justify-center">
                 <PropagateLoader />
               </div>
             ) : (
@@ -148,7 +148,7 @@ export default function MainPage() {
             )}
           </div>
           {/* 오른쪽 : the Hype box */}
-          <div className="w-[30%] py-16">
+          <div className="w-full py-16">
             {/* top svg 이미지 */}
             <div className="relative w-full mb-8">
               <img src={HypeImg} alt="hype_image" />

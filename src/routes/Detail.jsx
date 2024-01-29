@@ -69,7 +69,7 @@ export default function Detail() {
           </div>
         ) : (
           <>
-            <div className=" z-10 max-w-7xl w-full h-full grid grid-cols-[1fr_2fr] gap-16">
+            <div className=" z-10 max-w-7xl w-full h-full grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-16">
               <div className="w-full h-full flex items-start ">
                 <img
                   className="w-[90%] aspect-[4/6] pt-8 object-cover"
@@ -165,7 +165,7 @@ export default function Detail() {
       {/* character */}
       <Layout7>
         <TitleRotate text="characters" />
-        <div className="grid grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
           {characters?.map((item, index) => (
             <CharacterItem item={item} key={index} />
           ))}
@@ -174,7 +174,7 @@ export default function Detail() {
       {/* creator */}
       <Layout7>
         <TitleRotate text="creators" />
-        <div className="grid grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
           {creators?.map((item, index) => (
             <CreatorItem key={index} item={item} />
           ))}

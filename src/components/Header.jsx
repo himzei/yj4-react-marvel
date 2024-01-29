@@ -8,6 +8,7 @@ import { MenuOpenContext } from "../context/MenuOpenContext";
 import { useState } from "react";
 import NewsComponent from "./menus/NewsComponent";
 import ComicsComponent from "./menus/ComicsComponent";
+import { IoMenuSharp } from "react-icons/io5";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -44,7 +45,7 @@ export default function Header() {
         <div className="w-full h-12 flex bg-main-dark justify-center border-b border-t border-gray-700 ">
           <div className="relative max-w-7xl w-full h-full flex justify-between items-center text-white text-xs">
             {/* login */}
-            <div className="border-r border-l uppercase border-gray-700 h-full px-4 flex items-center space-x-2">
+            <div className="hidden md:flex border-r border-l uppercase border-gray-700 h-full px-4  items-center space-x-2">
               <div className="w-4 h-4 bg-gray-100 rounded-full text-main-dark italic">
                 <p className="translate-x-[3px] font-semibold italic">IN</p>
               </div>
@@ -52,9 +53,13 @@ export default function Header() {
               <span className="-translate-y-[1px]">|</span>
               <span>Join</span>
             </div>
+            {/* 메뉴 아이콘 */}
+            <div className="block md:hidden px-4 cursor-pointer text-2xl">
+              <IoMenuSharp />
+            </div>
             {/* search */}
-            <div className="px-4 border-r border-l border-gray-700 h-full flex space-x-4 items-center">
-              <div className="h-full flex items-center space-x-2 border-r border-gray-700 pr-4">
+            <div className="px-4  md:border-r md:border-l md:border-gray-700 h-full flex md:space-x-4 items-center ">
+              <div className="h-full items-center space-x-2 border-r border-gray-700 pr-4 hidden  md:flex">
                 <img
                   className="h-[50%]"
                   src="https://cdn.marvel.com/u/prod/marvel/images/mu/web/2021/icon-mu-shield.png"
@@ -65,7 +70,8 @@ export default function Header() {
                   <p className="text-[8px]">subscribe</p>
                 </div>
               </div>
-              <div>
+              {/* search */}
+              <div className="">
                 <FaSearch />
               </div>
             </div>
@@ -87,7 +93,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-        <div className="w-full h-10 bg-main-dark flex justify-center uppercase text-white items-center text-xs font-semibold space-x-8">
+        <div className="w-full h-10 bg-main-dark hidden md:flex justify-center uppercase text-white items-center text-xs font-semibold space-x-8">
           {MENUS.map((menu) => (
             <NavLink
               key={menu.text}

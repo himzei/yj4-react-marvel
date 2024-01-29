@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <>
       <div className="w-full flex py-16 bg-main-dark  justify-center">
-        <div className="max-w-7xl w-full flex justify-between text-white">
+        <div className="max-w-7xl w-full px-4 flex flex-col space-y-16 justify-between text-white md:space-y-0 md:flex-row  ">
           {/* 1 */}
           <div className="flex space-x-8 uppercase">
             <div className="w-20 ">
@@ -37,7 +37,7 @@ export default function Footer() {
             </div>
           </div>
           {/* 2 */}
-          <div className="space-y-8">
+          <div className="flex md:flex-col gap-y-8">
             {/* insider */}
             <div className="flex items-center space-x-4">
               {/* image */}
@@ -78,7 +78,7 @@ export default function Footer() {
           {/* 3 */}
           <div className="flex flex-col space-y-6">
             <h3 className="uppercase">follow Marvel</h3>
-            <div className="grid  grid-cols-4 grid-rows-2 text-2xl text-gray-500 gap-x-10 gap-y-6">
+            <div className="grid grid-cols-7  md:grid-cols-4 md:grid-rows-2 text-2xl text-gray-500 gap-x-10 gap-y-6">
               <p className="">
                 <FaFacebookSquare />
               </p>
@@ -104,7 +104,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="min-w-7xl w-full flex justify-center py-8 bg-main-dark text-gray-500 text-xs space-x-8">
+      <div className="min-w-7xl w-[80%] md:w-full mx-auto flex flex-wrap justify-center py-8 bg-main-dark text-gray-500 text-xs gap-x-8 md:gap-4">
         <span>Terms of Use</span>
         <span>Privacy Policy</span>
         <span>Interest-Based Ads</span>

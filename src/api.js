@@ -1,6 +1,13 @@
 const BASE_URL = "https://gateway.marvel.com:443/v1/public";
 export const API_KEY = import.meta.env.VITE_API_KEY;
 
+export function test() {
+  const data = fetch("https://jsonplaceholder.typicode.com/posts").then((res) =>
+    res.json()
+  );
+  return data;
+}
+
 export async function apiGetComics({ queryKey }) {
   const { limit } = queryKey[1];
   try {

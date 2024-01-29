@@ -93,7 +93,7 @@ const SelectBtns = ({ numTracks, setSelected, selected }) => {
           <p
             className={`text-gray-500 leading-5 ${
               selected === index && "text-red-600"
-            } w-full h-16 flex text-left items-start pt-4 px-1 `}
+            } w-full h-16 text-left items-start pt-4 px-1 hidden md:flex `}
           >
             {item.title}
           </p>
@@ -139,7 +139,7 @@ const Card = ({
             alt="lima"
             className="w-full h-full object-cover object-center "
           />
-          <div className="absolute left-[50%] -translate-x-[50%] max-w-7xl w-full h-full flex flex-col justify-center space-y-4">
+          <div className="absolute px-4 left-[50%] -translate-x-[50%] max-w-7xl w-full h-full flex flex-col justify-center space-y-4">
             <div className="h-28">
               <img
                 src={image}
@@ -148,7 +148,7 @@ const Card = ({
               />
             </div>
             <h1 className="text-white text-4xl font-bold uppercase ">{name}</h1>
-            <p className="text-xl w-1/2 text-white">{description}</p>
+            <p className="text-xl w-2/3 md:w-1/2 text-white">{description}</p>
             <div className="py-4 flex space-x-4">
               {link && <Button type="read more" link={link} />}
               {link2 && <Button type="unlock now" link={link2} />}
@@ -185,8 +185,8 @@ export default function MainSlide() {
         selected={selected}
       />
       <div className="w-full flex justify-center bg-white ">
-        <div className="max-w-7xl w-full py-8 grid grid-cols-4">
-          <div className="col-span-3 -translate-y-14 z-10 bg-white pl-4 h-full">
+        <div className="max-w-7xl w-full py-8 grid grid-cols-1 md:grid-cols-[3fr_1fr]">
+          <div className="-translate-y-8 md:-translate-y-14 z-10 bg-white md:pl-4 h-full">
             <SelectBtns
               numTracks={testimonials}
               setSelected={setSelected}
