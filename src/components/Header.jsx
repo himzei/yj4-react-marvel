@@ -22,11 +22,16 @@ import Tumb from "../assets/Tumb";
 const MobileMenuLink = ({ menu }) => {
   return (
     <Link to={menu.href}>
-      <div className="w-full flex justify-between items-center ">
-        <div className="text-white uppercase text-lg py-2.5">{menu.text}</div>
+      <div className="relative w-full flex justify-between items-center group">
+        <div className="text-neutral-300 duration-300 group-hover:text-white uppercase text-lg py-2.5">
+          {menu.text}
+        </div>
         <div className="text-red-600 text-xl font-semibold">
           <MdArrowForwardIos />
         </div>
+
+        {/* 밑줄 */}
+        <span className="absolute left-0 right-8 bottom-0 origin-left transition-transform h-[1px] bg-neutral-600 duration-300 ease-out scale-x-0 group-hover:scale-x-100" />
       </div>
     </Link>
   );
