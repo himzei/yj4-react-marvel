@@ -5,9 +5,9 @@ export default function NotFound() {
   return (
     <Layout>
       <div className="w-full flex justify-center">
-        <div className="max-w-7xl w-full flex items-end h-[calc(100vh-420px)]">
+        <div className="max-w-7xl w-full flex flex-col md:flex-row items-center md:items-end md:h-[calc(100vh-420px)] px-4">
           {/* left */}
-          <div className="w-1/2 h-full flex flex-col justify-center space-y-8">
+          <div className="w-full md:w-1/2 h-full flex flex-col justify-center space-y-8">
             <h1 className="uppercase text-4xl font-bold">404 PAGE not found</h1>
             <h2 className=" text-lg font-semibold">
               HYDRA has stolen this page from the S.H.I.E.L.D database!
@@ -19,7 +19,7 @@ export default function NotFound() {
             </p>
           </div>
           {/* right */}
-          <div className="w-1/2 h-[95%] flex justify-center items-end overflow-hidden">
+          <div className="w-full md:w-1/2 h-[95%] flex justify-center items-end overflow-hidden">
             <img
               className="h-full object-cover animate-scaling"
               src={NotImage}

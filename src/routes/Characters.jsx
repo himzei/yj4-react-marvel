@@ -24,7 +24,7 @@ export default function Characters() {
             <TitleRotate text="featured characters" />
           </div>
           {/* list 36 */}
-          <div className="w-full grid grid-cols-6 grid-rows-6 gap-4 px-4 my-2">
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-6 gap-4 px-4 my-2">
             {data?.data?.results.map((item, index) => (
               <CharacterItem item={item} key={index} />
             ))}

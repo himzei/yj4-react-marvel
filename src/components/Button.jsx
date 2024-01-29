@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 
-export default function Button({ link, type, outline, isFetching }) {
+export default function Button({ link, type, outline, isFetching, onClick }) {
   return (
     <Link to={link}>
       <button
+        onClick={onClick}
         disabled={isFetching}
         style={{
           clipPath:

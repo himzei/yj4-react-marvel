@@ -9,11 +9,107 @@ import { useState } from "react";
 import NewsComponent from "./menus/NewsComponent";
 import ComicsComponent from "./menus/ComicsComponent";
 import { IoMenuSharp } from "react-icons/io5";
+import { FiMenu, FiX } from "react-icons/fi";
+import { MdArrowForwardIos } from "react-icons/md";
+import Facebook from "../assets/Facebook";
+import Insta from "../assets/Insta";
+import Twitter from "../assets/Twitter";
+import Youtube from "../assets/Youtube";
+import Pinterest from "../assets/Pinterest";
+import SnapChat from "../assets/SnapChat";
+import Tumb from "../assets/Tumb";
+
+const MobileMenuLink = ({ menu }) => {
+  return (
+    <Link to={menu.href}>
+      <div className="w-full flex justify-between items-center ">
+        <div className="text-white uppercase text-lg py-2.5">{menu.text}</div>
+        <div className="text-red-600 text-xl font-semibold">
+          <MdArrowForwardIos />
+        </div>
+      </div>
+    </Link>
+  );
+};
+
+const MobileMenu = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  return (
+    <div className="block md:hidden z-30">
+      <button
+        className="block text-2xl px-2"
+        onClick={() => setMobileOpen(true)}
+      >
+        <FiMenu />
+      </button>
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.nav
+            initial={{ x: "-100vw" }}
+            animate={{ x: 0 }}
+            exit={{ x: "-100vw" }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="fixed left-0 top-0 bottom-0 flex h-screen w-full flex-col justify-between bg-main-dark"
+          >
+            {/* 1 위쪽 */}
+            <div>
+              {/* 1 */}
+              <div className="flex items-center justify-between p-3 border-b border-neutral-300">
+                <button onClick={() => setMobileOpen(false)}>
+                  <FiX className="text-2xl text-white" />
+                </button>
+                <div className="text-white text-lg">
+                  <FaSearch />
+                </div>
+              </div>
+              {/* 위쪽 */}
+              <div className="bg-main-dark p-4">
+                {MENUS.map((menu, index) => (
+                  <MobileMenuLink
+                    key={index}
+                    menu={menu}
+                    setMobileOpen={setMobileOpen}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* 아래쪽 */}
+            <div className="text-white px-4 py-4 flex flex-col">
+              {/* 1 */}
+              <div className="py-8 px-2 text-yellow-600 border-t border-neutral-500">
+                <h4>MARVEL INSIDER</h4>
+                <div className="w-full flex justify-between py-4">
+                  <h3 className="text-white text-lg">KEN</h3>
+
+                  <div className="text-red-600 text-xl font-semibold">
+                    <MdArrowForwardIos />
+                  </div>
+                </div>
+              </div>
+              {/* 2 */}
+              <div className="flex justify-around border-t border-neutral-500 py-8 ">
+                <Facebook />
+                <Insta />
+                <Twitter />
+                <Youtube />
+                <Pinterest />
+                <SnapChat />
+                <Tumb />
+              </div>
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [logoSize, setLogoSize] = useState(false);
+
   const [menuContent, setMenuContent] = useState();
   const showFlyout = menuContent && menuOpen;
 
@@ -53,6 +149,8 @@ export default function Header() {
               <span className="-translate-y-[1px]">|</span>
               <span>Join</span>
             </div>
+            {/* mobile 메뉴 */}
+            <MobileMenu />
             {/* 메뉴 아이콘 */}
             <div className="block md:hidden px-4 cursor-pointer text-2xl">
               <IoMenuSharp />
@@ -71,7 +169,7 @@ export default function Header() {
                 </div>
               </div>
               {/* search */}
-              <div className="">
+              <div className="text-lg">
                 <FaSearch />
               </div>
             </div>

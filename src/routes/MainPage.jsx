@@ -33,7 +33,6 @@ export default function MainPage() {
     ({ pageParam = 0 }) => apiGetEvents({ pageParam }),
     {
       staleTime: Infinity,
-      cacheTime: 0,
       getNextPageParam: (lastPage, pages) => {
         const limit = lastPage.data.limit;
         const count = lastPage.data.count;
@@ -46,7 +45,7 @@ export default function MainPage() {
       },
     }
   );
-
+  console.log(isFetching);
   const { data: dataCharacters, isLoading: isLoadingCharacters } = useQuery(
     ["getCharacters", { limit: 30 }],
     apiGetCharacters
@@ -61,7 +60,7 @@ export default function MainPage() {
       {/* 코믹스 */}
       <section className="w-full bg-white">
         {/* 이미지 타이틀 */}
-        <div className="relative w-full h-[500px] flex justify-end bg-main-dark">
+        <div className="relative w-full h-[500px] flex justify-end bg-main-dark  b">
           <div
             className="w-[55%] h-full"
             style={{
@@ -135,14 +134,12 @@ export default function MainPage() {
               </div>
             )}
             {hasNextPage && (
-              <div
-                className="w-full pb-4 flex justify-center"
-                onClick={() => fetchNextPage()}
-              >
+              <div className="pb-4 flex justify-center">
                 <Button
                   isFetching={isFetching}
                   type="load more"
                   outline="outline"
+                  onClick={() => fetchNextPage()}
                 />
               </div>
             )}

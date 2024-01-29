@@ -1,6 +1,6 @@
 export default function TitleRotate({ text, color }) {
   return (
-    <div className="relative flex items-center uppercase w-80 h-20 text-xl tracking-widest ">
+    <div className="relative flex items-center uppercase w-80 h-20 text-xl tracking-widest  ">
       <span
         className={`${
           color === "dark" ? "text-white bg-main-dark" : "text-black"

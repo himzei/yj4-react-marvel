@@ -30,8 +30,8 @@ export default function Comics() {
       />
       {/* 리스트 */}
       <section className="w-full flex justify-center bg-white">
-        <div className="relative max-w-7xl w-full h-[350px]">
-          <div className="w-full h-full absolute -top-8 left-0 right-0 bg-white flex p-2">
+        <div className="relative max-w-7xl w-full">
+          <div className="w-full bg-white -translate-y-8 flex flex-wrap p-2">
             {data?.data?.results?.slice(1, 7).map((item, index) => (
               <ListItem
                 key={index}

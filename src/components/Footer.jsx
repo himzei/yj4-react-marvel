@@ -1,13 +1,11 @@
 import LogoFooter from "../assets/png/logo-footer.png";
-import {
-  FaFacebookSquare,
-  FaInstagramSquare,
-  FaPinterest,
-  FaBell,
-} from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { IoLogoYoutube } from "react-icons/io5";
-import { AiFillEuroCircle } from "react-icons/ai";
+import Facebook from "../assets/Facebook";
+import Insta from "../assets/Insta";
+import Twitter from "../assets/Twitter";
+import Youtube from "../assets/Youtube";
+import Pinterest from "../assets/Pinterest";
+import SnapChat from "../assets/SnapChat";
+import Tumb from "../assets/Tumb";
 
 export default function Footer() {
   return (
@@ -79,32 +77,18 @@ export default function Footer() {
           <div className="flex flex-col space-y-6">
             <h3 className="uppercase">follow Marvel</h3>
             <div className="grid grid-cols-7  md:grid-cols-4 md:grid-rows-2 text-2xl text-gray-500 gap-x-10 gap-y-6">
-              <p className="">
-                <FaFacebookSquare />
-              </p>
-              <p className="">
-                <FaInstagramSquare />
-              </p>
-              <p className="">
-                <FaXTwitter />
-              </p>
-              <p className="">
-                <IoLogoYoutube />
-              </p>
-              <p className="">
-                <FaPinterest />
-              </p>
-              <p className="">
-                <FaBell />
-              </p>
-              <p className="">
-                <AiFillEuroCircle />
-              </p>
+              <Facebook />
+              <Insta />
+              <Twitter />
+              <Youtube />
+              <Pinterest />
+              <SnapChat />
+              <Tumb />
             </div>
           </div>
         </div>
       </div>
-      <div className="min-w-7xl w-[80%] md:w-full mx-auto flex flex-wrap justify-center py-8 bg-main-dark text-gray-500 text-xs gap-x-8 md:gap-4">
+      <div className="min-w-7xl w-full md:w-full mx-auto flex flex-wrap justify-center py-8 bg-main-dark text-gray-500 text-xs gap-x-8 md:gap-4">
         <span>Terms of Use</span>
         <span>Privacy Policy</span>
         <span>Interest-Based Ads</span>
