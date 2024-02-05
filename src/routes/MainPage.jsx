@@ -45,7 +45,7 @@ export default function MainPage() {
       },
     }
   );
-  console.log(isFetching);
+
   const { data: dataCharacters, isLoading: isLoadingCharacters } = useQuery(
     ["getCharacters", { limit: 30 }],
     apiGetCharacters

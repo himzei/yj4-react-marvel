@@ -1,12 +1,6 @@
 const BASE_URL = "https://gateway.marvel.com:443/v1/public";
 export const API_KEY = import.meta.env.VITE_API_KEY;
-
-export function test() {
-  const data = fetch("https://jsonplaceholder.typicode.com/posts").then((res) =>
-    res.json()
-  );
-  return data;
-}
+import qs from "qs";
 
 export async function apiGetComics({ queryKey }) {
   const { limit } = queryKey[1];
@@ -105,6 +99,30 @@ export async function apiGetCreators({ limit }) {
         headers: {
           "Content-Type": "application/json",
         },
+      }
+    ).then((res) => res.json());
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function apiPostGoogleEmail(data) {
+  // const formData = new FormData();
+  // formData.append("name", data.name);
+  // formData.append("email", data.email);
+  // formData.append("message", data.message);
+
+  // console.log(JSON.stringify(data));
+  try {
+    return await fetch(
+      "https://script.google.com/macros/s/AKfycbxTfW8eHeM_vNjGAPPhjlyskqwHSuKGq_Cs8IZ7Yy2DSbfrCsn5h5akI77nHQ1g1lVb/exec",
+      {
+        method: "post",
+        headers: {
+          "Content-Type": `application/x-www-form-urlencoded`,
+        },
+
+        body: qs.stringify(data),
       }
     ).then((res) => res.json());
   } catch (error) {

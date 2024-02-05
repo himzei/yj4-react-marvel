@@ -5,13 +5,13 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import MainPage from "./routes/MainPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import NotFound from "./routes/NotFound";
-import Test from "./routes/Test";
 import Comics from "./routes/Comics";
 import Characters from "./routes/Characters";
 import CharacterDetail from "./routes/CharacterDetail";
 import Detail from "./routes/Detail";
 import CreatorDetail from "./routes/CreatorDetail";
 import EventDetail from "./routes/EventDetail";
+import Email from "./routes/Email";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <MainPage />,
+      },
+      {
+        path: "email",
+        element: <Email />,
       },
       {
         path: "creators/:id",
@@ -58,10 +62,6 @@ const router = createBrowserRouter([
             element: <Detail />,
           },
         ],
-      },
-      {
-        path: "test",
-        element: <Test />,
       },
     ],
   },
